@@ -1,0 +1,340 @@
+/* ===================================
+   MOBILE NAVIGATION - SOLUTION PROFESSIONNELLE UI/UX
+   Architecture claire et maintenable
+   =================================== */
+
+/* Variables CSS pour cohérence */
+:root {
+    --nav-z-index: 1000;
+    --mobile-menu-z-index: 1050;
+    --overlay-z-index: 1040;
+    --hamburger-z-index: 1060;
+    
+    --mobile-menu-bg: #004080;
+    --mobile-overlay-bg: rgba(0, 0, 0, 0.5);
+    --mobile-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================================
+   1. NAVBAR BASE - DESKTOP & MOBILE
+   =================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--nav-z-index);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    transition: var(--mobile-transition);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* ===================================
+   2. HAMBURGER MENU - TOUJOURS VISIBLE
+   =================================== */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: var(--hamburger-z-index);
+    position: relative;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: var(--mobile-transition);
+}
+
+/* Animation hamburger → X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===================================
+   3. MOBILE MENU - ARCHITECTURE CLAIRE
+   =================================== */
+
+@media (max-width: 1024px) {
+    
+    /* Afficher hamburger sur mobile */
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Menu mobile - Architecture moderne */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: var(--mobile-menu-bg);
+        padding: 80px 30px 30px;
+        overflow-y: auto;
+        z-index: var(--mobile-menu-z-index);
+        transition: var(--mobile-transition);
+        
+        /* Style moderne */
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Menu ouvert */
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    /* ===================================
+       4. OVERLAY SEMI-TRANSPARENT
+       =================================== */
+    
+    /* Overlay derrière le menu */
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--mobile-overlay-bg);
+        z-index: var(--overlay-z-index);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--mobile-transition);
+        backdrop-filter: blur(2px);
+    }
+    
+    /* Overlay visible quand menu ouvert */
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* ===================================
+       5. NAVIGATION LINKS - UX OPTIMISÉE
+       =================================== */
+    
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-list > li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-list > li:last-child {
+        border-bottom: none;
+        margin-top: 20px;
+    }
+    
+    .nav-link {
+        display: block;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 16px 0;
+        text-decoration: none;
+        transition: var(--mobile-transition);
+        position: relative;
+    }
+    
+    /* Hover effect moderne */
+    .nav-link:hover,
+    .nav-link:focus {
+        color: #FF6600;
+        padding-left: 12px;
+    }
+    
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 2px;
+        background: #FF6600;
+        transform: translateY(-50%);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::before {
+        width: 20px;
+    }
+    
+    /* ===================================
+       6. DROPDOWN MOBILE - SIMPLIFIÉ
+       =================================== */
+    
+    .nav-dropdown .dropdown-toggle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        margin-top: 8px;
+        transition: max-height 0.3s ease;
+    }
+    
+    .nav-dropdown.open .dropdown-menu {
+        max-height: 200px;
+    }
+    
+    .dropdown-menu li a {
+        padding: 12px 16px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        display: block;
+    }
+    
+    .dropdown-menu li a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #FF6600;
+    }
+    
+    /* ===================================
+       7. BOUTONS SPÉCIAUX - CTA & LANGUAGE
+       =================================== */
+    
+    .lang-switcher {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: var(--mobile-transition);
+    }
+    
+    .lang-switcher:hover {
+        background: #FF6600;
+        border-color: #FF6600;
+    }
+    
+    .btn-nav-cta {
+        background: linear-gradient(135deg, #FF6600 0%, #e55a00 100%);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: 700;
+        text-align: center;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        transition: var(--mobile-transition);
+    }
+    
+    .btn-nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+    }
+    
+    /* ===================================
+       8. ÉTATS & ANIMATIONS
+       =================================== */
+    
+    /* Empêcher le scroll du body quand menu ouvert */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+    
+    /* Animation d'entrée pour les liens */
+    .nav-menu.active .nav-link {
+        animation: slideInRight 0.3s ease forwards;
+    }
+    
+    .nav-menu.active .nav-link:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active .nav-link:nth-child(2) { animation-delay: 0.2s; }
+    .nav-menu.active .nav-link:nth-child(3) { animation-delay: 0.3s; }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+/* ===================================
+   9. RESPONSIVE BREAKPOINTS
+   =================================== */
+
+/* Tablette paysage */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .nav-menu {
+        width: 400px;
+        padding: 60px 40px 30px;
+    }
+}
+
+/* Mobile paysage */
+@media (max-width: 768px) and (orientation: landscape) {
+    .nav-menu {
+        width: 320px;
+        padding: 50px 25px 20px;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+    .nav-menu {
+        width: 100vw;
+        padding: 80px 20px 20px;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+        padding: 18px 0;
+    }
+}

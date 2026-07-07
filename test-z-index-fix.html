@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Z-Index Fix - Navigation au Premier Plan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    <style>
+        body {
+            padding-top: 80px;
+        }
+        
+        /* Contenu de test avec arrière-plan visible */
+        .test-zone {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            min-height: 100vh;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .content-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .problem-demo {
+            background: #ff4757;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .solution-demo {
+            background: #2ed573;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .highlight-zone {
+            border: 3px solid red;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            position: relative;
+        }
+        
+        .highlight-zone::before {
+            content: "CETTE ZONE ÉTAIT LE PROBLÈME";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: red;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Z-Index Fix Test</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">🏠 Accueil</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#services" class="nav-link">⚙️ Services <i class="fas fa-chevron-down"></i></a>
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="alert('Flexibles hydrauliques')">🔧 Flexibles hydrauliques</a></li>
+                                <li><a href="#" onclick="alert('Solutions métalliques')">🏗️ Solutions métalliques</a></li>
+                                <li><a href="#" onclick="alert('Charpentes métalliques')">🏢 Charpentes métalliques</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" onclick="alert('Produits')" class="nav-link">📦 Produits</a></li>
+                        <li><a href="#" onclick="alert('Réalisations')" class="nav-link">🎯 Réalisations</a></li>
+                        <li><a href="#" onclick="alert('À propos')" class="nav-link">ℹ️ À propos</a></li>
+                        <li><a href="#" onclick="alert('Contact')" class="nav-link">📞 Contact</a></li>
+                        <li><a href="#" onclick="alert('Devis demandé !')" class="nav-link btn-nav-cta">💼 Demander un devis</a></li>
+                        <li><button class="lang-switcher" onclick="alert('Langue changée !')" type="button">🇫🇷 FR</button></li>
+                    </ul>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Zone (simulate problematic content) -->
+    <div class="test-zone">
+        <div class="content-card">
+            <h1>🎯 Test Z-Index - Navigation au Premier Plan</h1>
+            
+            <div class="problem-demo">
+                ❌ AVANT : Cette zone blanche bloquait la navigation mobile
+            </div>
+            
+            <div class="solution-demo">
+                ✅ MAINTENANT : La navigation passe AU-DESSUS de ce contenu
+            </div>
+            
+            <div class="highlight-zone">
+                <h3>Zone de Contenu Problématique</h3>
+                <p>Cette zone avec fond blanc était celle qui s'affichait par-dessus la navigation mobile, empêchant de cliquer sur les liens du menu.</p>
+                <p><strong>Solution appliquée :</strong> <code>z-index: -1</code> quand <code>body.menu-open</code></p>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <strong>CSS appliqué :</strong><br>
+                    <code style="color: #dc3545;">body.menu-open .content-card { z-index: -1 !important; }</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h2>🧪 Instructions de Test</h2>
+            <ol style="text-align: left; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Ouvrez</strong> les outils développeur (F12)</li>
+                <li><strong>Activez</strong> le mode mobile dans les dev tools</li>
+                <li><strong>Cliquez</strong> sur le hamburger bleu (3 traits)</li>
+                <li><strong>Vérifiez</strong> que le menu s'affiche AU-DESSUS de cette zone blanche</li>
+                <li><strong>Cliquez</strong> sur les liens du menu - ils doivent déclencher des alerts</li>
+                <li><strong>Testez</strong> le dropdown Services</li>
+            </ol>
+            
+            <div style="background: #e3f2fd; padding: 20px; border-radius: 12px; margin-top: 20px;">
+                <p style="margin: 0; font-weight: 600; color: #1976d2;">
+                    🎯 <strong>Objectif :</strong> La navigation doit être entièrement fonctionnelle,<br>
+                    même avec ce contenu blanc en arrière-plan !
+                </p>
+            </div>
+        </div>
+        
+        <!-- Plus de contenu pour tester le scroll -->
+        <div class="content-card">
+            <h3>📄 Contenu Additionnel</h3>
+            <p>Ce contenu simule une vraie page avec beaucoup de sections qui pourraient interférer avec la navigation mobile.</p>
+        </div>
+        
+        <div class="content-card">
+            <h3>🔄 Test Zone Étendue</h3>
+            <p>Scroll down pour voir plus de contenu qui doit rester en arrière-plan quand le menu mobile est ouvert.</p>
+        </div>
+    </div>
+
+    <script src="js/navigation-unified.js"></script>
+    
+    <script>
+        // Debug z-index au clic sur hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            hamburger.addEventListener('click', function() {
+                setTimeout(() => {
+                    const menuZIndex = window.getComputedStyle(navMenu).zIndex;
+                    const contentZIndex = window.getComputedStyle(document.querySelector('.content-card')).zIndex;
+                    
+                    console.log('🔍 Z-Index Debug:');
+                    console.log('Menu mobile z-index:', menuZIndex);
+                    console.log('Contenu page z-index:', contentZIndex);
+                    
+                    if (parseInt(menuZIndex) > parseInt(contentZIndex)) {
+                        console.log('✅ Navigation au-dessus du contenu - OK !');
+                    } else {
+                        console.log('❌ Problème : contenu au-dessus de la navigation');
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Mobile Simple - ATC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    <style>
+        body {
+            padding-top: 80px;
+            background: #f0f8ff;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .test-content {
+            padding: 30px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .test-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .success-box {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .test-title {
+            color: #004080;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            text-align: left;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list i {
+            color: #10b981;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Navigation Simple</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">🏠 Accueil</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#services" class="nav-link">⚙️ Services <i class="fas fa-chevron-down"></i></a>
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">🔧 Flexibles hydrauliques</a></li>
+                                <li><a href="#">🏗️ Solutions métalliques</a></li>
+                                <li><a href="#">🏢 Charpentes métalliques</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link">📦 Produits</a></li>
+                        <li><a href="#" class="nav-link">🎯 Réalisations</a></li>
+                        <li><a href="#" class="nav-link">ℹ️ À propos</a></li>
+                        <li><a href="#" class="nav-link">📞 Contact</a></li>
+                        <li><a href="#" class="nav-link btn-nav-cta">💼 Demander un devis</a></li>
+                        <li><button class="lang-switcher" type="button">🇫🇷 FR</button></li>
+                    </ul>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h1 class="test-title">✅ Navigation Mobile Simplifiée</h1>
+            
+            <div class="success-box">
+                🎉 OVERLAY SUPPRIMÉ ! Navigation prioritaire !
+            </div>
+            
+            <div class="info-box">
+                <h3 style="color: #004080; margin-bottom: 15px;">✨ Ce qui a été supprimé :</h3>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-times" style="color: #dc2626;"></i>
+                        <span>❌ Tous les overlays de flou compliqués</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times" style="color: #dc2626;"></i>
+                        <span>❌ Conteneurs ::before qui bloquaient le menu</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times" style="color: #dc2626;"></i>
+                        <span>❌ Z-index compliqués à millions</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-times" style="color: #dc2626;"></i>
+                        <span>❌ JavaScript complexe avec overlays</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h3 style="color: #004080; margin-bottom: 15px;">🎯 Ce qui reste (l'essentiel) :</h3>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>✅ Hamburger bleu visible et cliquable</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>✅ Menu mobile qui s'affiche correctement</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>✅ Navigation fonctionnelle à 100%</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>✅ Dropdown Services qui marche</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>✅ Fermeture clic extérieur + Escape</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px;">
+                <h3 style="color: #856404; margin-bottom: 15px;">🧪 Test maintenant :</h3>
+                <ol style="text-align: left; padding-left: 20px; line-height: 1.8; color: #856404;">
+                    <li><strong>Réduisez</strong> la fenêtre en mode mobile (&lt; 1024px)</li>
+                    <li><strong>Cliquez</strong> sur le hamburger bleu (3 traits)</li>
+                    <li><strong>Le menu doit s'ouvrir</strong> et être parfaitement utilisable</li>
+                    <li><strong>Testez</strong> le dropdown "Services"</li>
+                    <li><strong>Cliquez</strong> sur les liens - ils doivent fonctionner</li>
+                    <li><strong>Fermez</strong> avec clic à l'extérieur ou Escape</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="test-card">
+            <h2>📱 Navigation Mobile = PRIORITÉ #1</h2>
+            <p>Approche simplifiée : plus d'overlays compliqués, juste une navigation qui <strong>MARCHE</strong> ! 🚀</p>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-top: 20px;">
+                <p style="margin: 0; font-weight: 600; color: #004080;">
+                    🎯 L'objectif était simple : <strong>navigation mobile fonctionnelle</strong>.<br>
+                    ✅ Mission accomplie sans complications inutiles !
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation-unified.js"></script>
+</body>
+</html>

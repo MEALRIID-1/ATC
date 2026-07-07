@@ -109,7 +109,7 @@
         line-height: 1.6;
     }
 
-    /* Navigation improvements */
+    /* Navigation - sizing tweaks only (layout handled in style.css) */
     .navbar {
         padding: 15px 0;
     }
@@ -118,226 +118,16 @@
         padding: 10px 0;
     }
 
-    .hamburger {
-        display: flex;
-        z-index: 1002;
-        padding: 8px;
-    }
-
-    .hamburger span {
-        width: 28px;
-        height: 3px;
-        background: var(--white);
-        border-radius: 2px;
-        transition: var(--transition-base);
-    }
-
-    .navbar.scrolled .hamburger span {
-        background: var(--primary-color);
-    }
-
-    .hamburger.active span {
-        background: var(--white) !important;
-    }
-
     .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
         width: min(85vw, 380px);
-        height: 100vh;
-        background: linear-gradient(180deg, rgba(0, 64, 128, 0.98) 0%, rgba(26, 26, 26, 0.98) 100%);
-        backdrop-filter: blur(20px);
-        padding: 100px 28px 30px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-        overflow-y: auto;
-        z-index: 1001;
-    }
-
-    .nav-menu.active {
-        right: 0;
-    }
-
-    /* Create overlay when menu is open */
-    .nav-menu.active::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: -1;
-        animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: 0;
-        align-items: stretch;
-    }
-
-    .nav-list > li {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0;
-    }
-
-    .nav-list > li:last-child {
-        border-bottom: none;
-        margin-top: 20px;
+        padding: 90px 24px 30px;
     }
 
     .nav-link {
-        color: var(--white) !important;
         font-size: 18px !important;
-        font-weight: 600 !important;
         padding: 18px 0 !important;
-        display: block !important;
-        transition: var(--transition-base);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
-    .nav-link:hover {
-        color: var(--accent-color) !important;
-        padding-left: 15px !important;
-        text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
-    }
-
-    .nav-link.active {
-        color: var(--accent-color) !important;
-        font-weight: 700 !important;
-    }
-
-    .nav-link::after {
-        display: none;
-    }
-
-    /* Mobile dropdown improvements */
-    .nav-dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        display: flex !important;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        color: var(--white);
-        cursor: pointer;
-        transition: var(--transition-base);
-    }
-
-    .dropdown-toggle:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .dropdown-toggle i {
-        transition: var(--transition-base);
-        font-size: 14px;
-    }
-
-    .nav-dropdown.open .dropdown-toggle i {
-        transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-        margin-top: 8px;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .nav-dropdown.open .dropdown-menu {
-        max-height: 200px;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .dropdown-menu li a {
-        padding: 14px 20px;
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.9);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        transition: var(--transition-base);
-        background: transparent;
-    }
-
-    .dropdown-menu li:last-child a {
-        border-bottom: none;
-    }
-
-    .dropdown-menu li a:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--accent-color);
-        padding-left: 30px;
-    }
-
-    /* Language switcher and CTA button */
-    .lang-switcher {
-        background: rgba(255, 255, 255, 0.1) !important;
-        color: var(--white) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        padding: 12px 20px !important;
-        border-radius: 8px !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        text-align: center;
-        width: 100%;
-        margin-top: 10px;
-        transition: var(--transition-base);
-    }
-
-    .lang-switcher:hover {
-        background: var(--accent-color) !important;
-        border-color: var(--accent-color) !important;
-    }
-
-    .btn-nav-cta {
-        background: var(--gradient-primary) !important;
-        color: var(--white) !important;
-        padding: 14px 20px !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-        text-align: center;
-        width: 100%;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 64, 128, 0.3);
-        border: none !important;
-    }
-
-    .btn-nav-cta:hover {
-        background: var(--gradient-accent) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 64, 128, 0.4);
-    }
-
-    /* Logo mobile adjustments */
     .logo-text {
         font-size: 26px;
     }
@@ -2703,7 +2493,6 @@
         left: 0;
         right: 0;
         width: 100%;
-        z-index: 1000;
     }
     
     /* Adjust content for fixed header */

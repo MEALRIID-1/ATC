@@ -91,78 +91,40 @@ $(document).ready(function() {
         }
     });
 
-    // Mobile Menu Toggle - ENHANCED WITH Z-INDEX MANAGEMENT AND DEBUG
-    $('#hamburger').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const $hamburger = $(this);
-        const $navMenu = $('#navMenu');
-        const $navbar = $('.navbar');
-        const $body = $('body');
-        
-        // Debug: Check if menu has content
-        console.log('Menu content:', $navMenu.html());
-        console.log('Menu children count:', $navMenu.children().length);
-        
-        // Ensure navigation is built if not already done
-        if ($navMenu.children().length === 0) {
-            console.log('Rebuilding navigation...');
+    let mobileMenuScrollTop = 0;
+
+    function ensureNavigationBuilt() {
+        if ($('#navMenu').children().length === 0) {
             buildSharedNavigation();
             highlightCurrentPage();
         }
-        
-        // Toggle menu state
-        $hamburger.toggleClass('active');
-        $navMenu.toggleClass('active');
-        $body.toggleClass('no-scroll');
-        
-        // Enhanced z-index management when menu opens
-        if ($navMenu.hasClass('active')) {
-            // Force ultra-high z-index values
-            $navbar.css('z-index', '9999');
-            $navMenu.css('z-index', '9998');
-            $hamburger.css('z-index', '10000');
-            
-            // Force ALL page content behind menu with negative z-index
-            $('main, section, footer, .page-header, .hero-industrial, .container, article, div').not('.navbar, .nav-menu, .hamburger, .nav-wrapper').css('z-index', '-1');
-            
-            // Enhanced body scroll prevention
-            const scrollTop = $('html, body').scrollTop();
-            $body.css({
-                'overflow': 'hidden',
-                'position': 'fixed',
-                'width': '100%',
-                'height': '100vh',
-                'top': `-${scrollTop}px`
-            }).data('scroll-top', scrollTop);
-            
-            // Add overlay class for additional styling
-            $body.addClass('menu-overlay-active');
-            
-            // Force hide content with opacity as backup
-            $('body > *').not('.navbar').css('opacity', '0.1');
-            $navbar.css('opacity', '1');
-            
+    }
+
+    function openMobileMenu() {
+        ensureNavigationBuilt();
+
+        mobileMenuScrollTop = $(window).scrollTop();
+        $('#hamburger').addClass('active').attr('aria-expanded', 'true');
+        $('#navMenu').addClass('active').attr('aria-hidden', 'false');
+        $('body').addClass('menu-open').css('top', '-' + mobileMenuScrollTop + 'px');
+    }
+
+    function closeMobileMenu() {
+        $('#hamburger').removeClass('active').attr('aria-expanded', 'false');
+        $('#navMenu').removeClass('active').attr('aria-hidden', 'true');
+        $('.nav-dropdown').removeClass('open');
+        $('body').removeClass('menu-open').css('top', '');
+        $(window).scrollTop(mobileMenuScrollTop);
+    }
+
+    $('#hamburger').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ($('#navMenu').hasClass('active')) {
+            closeMobileMenu();
         } else {
-            // Re-enable body scroll and restore position
-            const scrollTop = $body.data('scroll-top') || 0;
-            $body.css({
-                'overflow': '',
-                'position': '',
-                'width': '',
-                'height': '',
-                'top': ''
-            }).removeClass('menu-overlay-active');
-            
-            // Restore content opacity
-            $('body > *').css('opacity', '');
-            
-            // Reset z-index for content
-            $('main, section, footer, .page-header, .hero-industrial, .container, article, div').css('z-index', '');
-            
-            // Restore scroll position
-            $('html, body').scrollTop(scrollTop);
+            openMobileMenu();
         }
     });
 
@@ -177,126 +139,27 @@ $(document).ready(function() {
         }
     });
 
-    // Close mobile menu when clicking on a link - ENHANCED
-    $(document).on('click', '.nav-link:not(.dropdown-parent)', function() {
-        const $hamburger = $('#hamburger');
-        const $navMenu = $('#navMenu');
-        const $body = $('body');
-        
-        $hamburger.removeClass('active');
-        $navMenu.removeClass('active');
-        $body.removeClass('no-scroll');
-        
-        // Enhanced scroll restoration
-        const scrollTop = $body.data('scroll-top') || 0;
-        $body.css({
-            'overflow': '',
-            'position': '',
-            'width': '',
-            'height': '',
-            'top': ''
-        }).removeClass('menu-overlay-active');
-        
-        // Restore content opacity and z-index
-        $('body > *').css('opacity', '');
-        $('main, section, footer, .page-header, .hero-industrial, .container, article, div').css('z-index', '');
-        
-        // Restore scroll position
-        $('html, body').scrollTop(scrollTop);
+    $(document).on('click', '.nav-link', function() {
+        if (!$(this).closest('.nav-dropdown').length && $('#navMenu').hasClass('active')) {
+            closeMobileMenu();
+        }
     });
 
-    // Close mobile menu when clicking outside - ENHANCED
     $(document).on('click', function(e) {
-        if (!$(e.target).closest('.nav-wrapper').length && $('#navMenu').hasClass('active')) {
-            const $hamburger = $('#hamburger');
-            const $navMenu = $('#navMenu');
-            const $body = $('body');
-            
-            $hamburger.removeClass('active');
-            $navMenu.removeClass('active');
-            $('.nav-dropdown').removeClass('open');
-            $body.removeClass('no-scroll');
-            
-            // Enhanced scroll restoration
-            const scrollTop = $body.data('scroll-top') || 0;
-            $body.css({
-                'overflow': '',
-                'position': '',
-                'width': '',
-                'height': '',
-                'top': ''
-            }).removeClass('menu-overlay-active');
-            
-            // Restore content opacity and z-index
-            $('body > *').css('opacity', '');
-            $('main, section, footer, .page-header, .hero-industrial, .container, article, div').css('z-index', '');
-            
-            // Restore scroll position
-            $('html, body').scrollTop(scrollTop);
+        if ($('#navMenu').hasClass('active') && !$(e.target).closest('.nav-wrapper').length) {
+            closeMobileMenu();
         }
     });
 
-    // Close menu on escape key - ENHANCED
     $(document).on('keydown', function(e) {
-        if (e.which === 27 && $('#navMenu').hasClass('active')) { // ESC key
-            const $hamburger = $('#hamburger');
-            const $navMenu = $('#navMenu');
-            const $body = $('body');
-            
-            $hamburger.removeClass('active');
-            $navMenu.removeClass('active');
-            $('.nav-dropdown').removeClass('open');
-            $body.removeClass('no-scroll');
-            
-            // Enhanced scroll restoration
-            const scrollTop = $body.data('scroll-top') || 0;
-            $body.css({
-                'overflow': '',
-                'position': '',
-                'width': '',
-                'height': '',
-                'top': ''
-            }).removeClass('menu-overlay-active');
-            
-            // Restore content opacity and z-index
-            $('body > *').css('opacity', '');
-            $('main, section, footer, .page-header, .hero-industrial, .container, article, div').css('z-index', '');
-            
-            // Restore scroll position
-            $('html, body').scrollTop(scrollTop);
+        if (e.which === 27 && $('#navMenu').hasClass('active')) {
+            closeMobileMenu();
         }
     });
 
-    // Handle window resize - ENHANCED
     $(window).on('resize', function() {
-        if ($(window).width() > 1024) {
-            const $hamburger = $('#hamburger');
-            const $navMenu = $('#navMenu');
-            const $body = $('body');
-            
-            $hamburger.removeClass('active');
-            $navMenu.removeClass('active');
-            $('.nav-dropdown').removeClass('open');
-            $body.removeClass('no-scroll');
-            
-            // Enhanced scroll restoration
-            const scrollTop = $body.data('scroll-top') || 0;
-            $body.css({
-                'overflow': '',
-                'position': '',
-                'width': '',
-                'height': '',
-                'top': ''
-            }).removeClass('menu-overlay-active');
-            
-            // Restore content opacity and z-index
-            $('body > *').css('opacity', '');
-            $('main, section, footer, .page-header, .hero-industrial, .container, article, div').css('z-index', '');
-            
-            // Restore scroll position if needed
-            if (scrollTop > 0) {
-                $('html, body').scrollTop(scrollTop);
-            }
+        if ($(window).width() > 1024 && $('#navMenu').hasClass('active')) {
+            closeMobileMenu();
         }
     });
 

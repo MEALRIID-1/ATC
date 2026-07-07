@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Navigation Mobile ATC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    <style>
+        body {
+            padding-top: 80px;
+        }
+        .demo-content {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            min-height: 100vh;
+        }
+        .demo-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .demo-title {
+            color: #004080;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .demo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .demo-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+        .demo-list li:last-child {
+            border-bottom: none;
+        }
+        .demo-list i {
+            color: #10b981;
+            width: 20px;
+        }
+        .status {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .status.success {
+            background: #10b981;
+            color: white;
+        }
+        .status.info {
+            background: #004080;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Atelier Tour du Cameroun</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                            <button class="dropdown-toggle" type="button" aria-label="Toggle Services dropdown">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="pages/flexibles-hydrauliques.html">Flexibles hydrauliques</a></li>
+                                <li><a href="pages/solutions-metalliques.html">Solutions métalliques</a></li>
+                                <li><a href="pages/charpentes.html">Charpentes métalliques</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="pages/produits.html" class="nav-link">Produits</a></li>
+                        <li><a href="pages/realisations.html" class="nav-link">Réalisations</a></li>
+                        <li><a href="pages/about.html" class="nav-link">À propos</a></li>
+                        <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="pages/devis.html" class="nav-link btn-nav-cta">Demander un devis</a></li>
+                        <li><button class="lang-switcher" id="langSwitcher" type="button">EN</button></li>
+                    </ul>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <div class="demo-card">
+            <h1 class="demo-title">🔧 Navigation Mobile - Tests ATC</h1>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <span class="status success">Navigation Corrigée</span>
+                <span class="status info">Version Mobile Optimisée</span>
+            </div>
+            
+            <ul class="demo-list">
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Hamburger bleu :</strong> Visible avec couleur bleue (#004080) par défaut</span>
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Z-index corrigé :</strong> Navbar (999999), Menu (999998), Overlay (1000)</span>
+                </li>
+                <li>
+                    <i class="fas fa-exclamation-triangle" style="color: #FF6600;"></i>
+                    <span><strong>PROBLÈME RÉSOLU :</strong> Overlay ne bloque plus le menu navigation</span>
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Menu mobile :</strong> S'affiche maintenant AU-DESSUS de l'overlay</span>
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Pointer-events :</strong> Overlay ne peut plus intercepter les clics</span>
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    <span><strong>Navigation visible :</strong> Seul le menu reste accessible et cliquable</span>
+                </li>
+            </ul>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                <h3 style="color: #004080; margin-bottom: 15px;">🧪 Instructions de test :</h3>
+                <ol style="padding-left: 20px; line-height: 1.8;">
+                    <li>Réduisez la fenêtre à une taille mobile (&lt; 1024px)</li>
+                    <li>Cliquez sur le hamburger bleu (trois traits)</li>
+                    <li>Vérifiez que le menu s'affiche au premier plan</li>
+                    <li>Vérifiez que le contenu derrière est flouté</li>
+                    <li>Testez le dropdown "Services" en mobile</li>
+                    <li>Fermez avec clic à l'extérieur ou Escape</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation-unified.js"></script>
+</body>
+</html>

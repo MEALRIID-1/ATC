@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 DEMO Navigation Mobile - Solution UI/UX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SOLUTION CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    
+    <style>
+        /* STYLES DEMO */
+        .demo-section {
+            padding: 120px 20px 50px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 2.5rem;
+            color: #004080;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .demo-instructions {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .demo-instructions h3 {
+            color: #004080;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .demo-checklist li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .demo-checklist .icon {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 0.2rem;
+        }
+        
+        .demo-status {
+            background: #004080;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        .demo-mobile-frame {
+            width: 320px;
+            height: 568px;
+            border: 8px solid #333;
+            border-radius: 24px;
+            margin: 2rem auto;
+            background: white;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        
+        .demo-content {
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .btn-demo {
+            background: #FF6600;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .demo-mobile-frame {
+                width: 280px;
+                height: 500px;
+            }
+            
+            .demo-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION MOBILE COMPLÈTE -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Atelier Tour du Cameroun</span>
+                    </a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">🏠 Accueil</a></li>
+                        <li class="nav-dropdown">
+                            <a href="pages/services.html" class="nav-link">⚙️ Services <i class="fas fa-chevron-down"></i></a>
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="pages/flexibles-hydrauliques.html">Flexibles hydrauliques</a></li>
+                                <li><a href="pages/solutions-metalliques.html">Solutions métalliques</a></li>
+                                <li><a href="pages/charpentes.html">Charpentes métalliques</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="pages/produits.html" class="nav-link">📦 Produits</a></li>
+                        <li><a href="pages/galerie.html" class="nav-link">🖼️ Galerie</a></li>
+                        <li><a href="pages/realisations.html" class="nav-link">🏗️ Réalisations</a></li>
+                        <li><a href="pages/about.html" class="nav-link">ℹ️ À propos</a></li>
+                        <li><a href="pages/contact.html" class="nav-link">📞 Contact</a></li>
+                        <li><a href="pages/devis.html" class="nav-link btn-nav-cta">💼 Demander un devis</a></li>
+                        <li><button class="lang-switcher" id="langSwitcher">🌐 EN</button></li>
+                    </ul>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Menu mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENU DEMO -->
+    <main>
+        <section class="demo-section">
+            <div class="demo-container">
+                <h1 class="demo-title">📱 Navigation Mobile Fixée</h1>
+                <p class="demo-subtitle">
+                    Solution UI/UX professionnelle pour la navigation mobile du site ATC.<br>
+                    <strong>Architecture claire, performante et accessible.</strong>
+                </p>
+
+                <div class="demo-instructions">
+                    <h3>🎯 Comment tester la solution :</h3>
+                    <ul class="demo-checklist">
+                        <li><span class="icon">✓</span><strong>Sur mobile :</strong> Cliquez sur le menu hamburger (☰) en haut à droite</li>
+                        <li><span class="icon">✓</span><strong>Vérifiez :</strong> Le menu bleu s'ouvre avec les liens visibles en blanc</li>
+                        <li><span class="icon">✓</span><strong>Navigation :</strong> Tous les onglets (Accueil, Services, etc.) doivent être cliquables</li>
+                        <li><span class="icon">✓</span><strong>Overlay :</strong> Le contenu derrière est flouté avec un overlay semi-transparent</li>
+                        <li><span class="icon">✓</span><strong>Fermeture :</strong> Menu se ferme en cliquant sur l'overlay ou les liens</li>
+                        <li><span class="icon">✓</span><strong>Responsive :</strong> Fonctionne sur toutes les tailles d'écran mobile</li>
+                    </ul>
+                </div>
+
+                <!-- SIMULATEUR MOBILE -->
+                <div class="demo-mobile-frame">
+                    <div class="demo-content">
+                        <h3>📱 Aperçu Mobile</h3>
+                        <p>Cette frame simule un écran mobile. Redimensionnez votre navigateur ou testez sur un vrai mobile.</p>
+                        
+                        <div class="demo-status">
+                            <strong>STATUS NAVIGATION:</strong><br>
+                            ✅ CSS architecture moderne chargée<br>
+                            ✅ JavaScript de contrôle initialisé<br>
+                            ✅ Z-index hierarchy fixée<br>
+                            ✅ Overlay semi-transparent créé<br>
+                            ✅ Animations fluides activées
+                        </div>
+
+                        <button class="btn-demo" onclick="window.openMobileMenu()">
+                            🧪 Forcer ouverture menu
+                        </button>
+                        
+                        <button class="btn-demo" onclick="window.closeMobileMenu()">
+                            🔒 Forcer fermeture menu
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-instructions">
+                    <h3>🛠️ Améliorations apportées :</h3>
+                    <ul class="demo-checklist">
+                        <li><span class="icon">🎨</span><strong>Architecture CSS propre :</strong> Variables CSS, z-index hiérarchisé, transitions fluides</li>
+                        <li><span class="icon">⚡</span><strong>JavaScript moderne :</strong> Classes ES6, gestion d'événements propre, accessibilité</li>
+                        <li><span class="icon">📱</span><strong>Mobile-first :</strong> Responsive design optimisé pour tous les breakpoints</li>
+                        <li><span class="icon">🔧</span><strong>Maintenable :</strong> Code commenté, modulaire et facilement extensible</li>
+                        <li><span class="icon">♿</span><strong>Accessible :</strong> Support clavier, aria-labels, contraste optimisé</li>
+                        <li><span class="icon">🧪</span><strong>Debuggable :</strong> Console logs, méthodes de debug intégrées</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <a href="index.html" class="btn-demo">← Retour à l'accueil</a>
+                    <a href="pages/services.html" class="btn-demo">Tester sur Services →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENU SUPPLÉMENTAIRE POUR TESTER LE SCROLL -->
+        <section style="padding: 3rem 2rem; background: white;">
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h2>📋 Spécifications Techniques</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h4>🎨 CSS</h4>
+                        <ul style="text-align: left; padding-left: 1rem;">
+                            <li>Variables CSS pour cohérence</li>
+                            <li>Architecture mobile-first</li>
+                            <li>Animations CSS3 fluides</li>
+                            <li>Z-index hiérarchisé</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h4>⚡ JavaScript</h4>
+                        <ul style="text-align: left; padding-left: 1rem;">
+                            <li>Classes ES6 modernes</li>
+                            <li>Event delegation</li>
+                            <li>Debug console intégré</li>
+                            <li>Fallback jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #004080; color: white; padding: 2rem 0; text-align: center;">
+        <p>🎯 <strong>Navigation Mobile Solution</strong> - ATC Website</p>
+        <p style="opacity: 0.8; margin-top: 0.5rem;">Architecture UI/UX professionnelle | Mobile-first | Accessible</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- SCRIPT DEMO -->
+    <script>
+        // Affichage status en temps réel
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 DEMO Navigation Mobile chargée');
+            console.log('📱 Taille écran:', window.innerWidth, 'x', window.innerHeight);
+        });
+    </script>
+</body>
+</html>

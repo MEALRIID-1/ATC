@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mobile Navigation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Atelier Tour du Cameroun</span>
+                    </a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="pages/services.html" class="nav-link active">Services</a></li>
+                        <li><a href="pages/produits.html" class="nav-link">Produits</a></li>
+                        <li><a href="pages/galerie.html" class="nav-link">Galerie</a></li>
+                        <li><a href="pages/realisations.html" class="nav-link">Réalisations</a></li>
+                        <li><a href="pages/about.html" class="nav-link">À propos</a></li>
+                        <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="pages/devis.html" class="nav-link btn-nav-cta">Demander un devis</a></li>
+                        <li><button class="lang-switcher" id="langSwitcher">EN</button></li>
+                    </ul>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section style="padding: 150px 0 50px; background: #f5f5f5;">
+            <div class="container">
+                <h1>Test Mobile Navigation</h1>
+                <p>Click the hamburger menu (☰) on mobile to test the navigation. The navigation should:</p>
+                <ul>
+                    <li>Open with a blue background covering the full screen</li>
+                    <li>Show white navigation links clearly visible</li>
+                    <li>Blur the background content</li>
+                    <li>Navigation links should be AU-DESSUS DE TOUT (above everything)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

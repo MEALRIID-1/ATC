@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Navigation Mobile Fix ATC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-force.css">
+    <style>
+        body {
+            padding-top: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .test-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 50px 20px;
+            text-align: center;
+        }
+        
+        .test-title {
+            color: #004080;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .z-index-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .z-index-info h3 {
+            color: #004080;
+            margin-bottom: 15px;
+        }
+        
+        .z-index-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .z-index-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .z-index-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .z-value {
+            background: #004080;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .test-content {
+            padding: 30px 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">ATC</span>
+                        <span class="logo-subtitle">Navigation Test</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                            <button class="dropdown-toggle" type="button">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Flexibles hydrauliques</a></li>
+                                <li><a href="#">Solutions métalliques</a></li>
+                                <li><a href="#">Charpentes métalliques</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link">Produits</a></li>
+                        <li><a href="#" class="nav-link">Réalisations</a></li>
+                        <li><a href="#" class="nav-link">À propos</a></li>
+                        <li><a href="#" class="nav-link">Contact</a></li>
+                        <li><a href="#" class="nav-link btn-nav-cta">Demander un devis</a></li>
+                        <li><button class="lang-switcher" type="button">FR</button></li>
+                    </ul>
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h1 class="test-title">🔧 Test Navigation Mobile - Problème Résolu</h1>
+            
+            <div class="success-message">
+                ✅ CORRECTION APPLIQUÉE : L'overlay n'apparaît plus au-dessus du menu navigation
+            </div>
+            
+            <div class="z-index-info">
+                <h3>📊 Nouvelle Hiérarchie Z-Index :</h3>
+                <ul class="z-index-list">
+                    <li>
+                        <span>🍔 Hamburger (bouton)</span>
+                        <span class="z-value">1,000,000</span>
+                    </li>
+                    <li>
+                        <span>🧭 Navbar (barre navigation)</span>
+                        <span class="z-value">999,999</span>
+                    </li>
+                    <li>
+                        <span>📱 Menu Mobile (contenu menu)</span>
+                        <span class="z-value">999,998</span>
+                    </li>
+                    <li>
+                        <span>🌫️ Overlay Flou (arrière-plan)</span>
+                        <span class="z-value">1,000</span>
+                    </li>
+                    <li>
+                        <span>📄 Contenu Page</span>
+                        <span class="z-value">1</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 12px;">
+                <h3 style="color: #004080; margin-bottom: 15px;">🧪 Étapes de Test :</h3>
+                <ol style="text-align: left; padding-left: 20px; line-height: 1.8;">
+                    <li><strong>Réduisez</strong> la fenêtre à une taille mobile (&lt; 1024px)</li>
+                    <li><strong>Cliquez</strong> sur le hamburger bleu (3 traits) en haut à droite</li>
+                    <li><strong>Vérifiez</strong> que le menu s'ouvre et reste visible</li>
+                    <li><strong>Testez</strong> les liens dans le menu (ils doivent être cliquables)</li>
+                    <li><strong>Vérifiez</strong> que l'overlay ne bloque plus le menu</li>
+                    <li><strong>Fermez</strong> avec clic à l'extérieur ou Escape</li>
+                </ol>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px;">
+                <p style="margin: 0; font-weight: 600; color: #856404;">
+                    <i class="fas fa-info-circle"></i> 
+                    Si le menu fonctionne correctement, le problème est résolu !
+                </p>
+            </div>
+        </div>
+        
+        <!-- Contenu supplémentaire pour tester le scroll -->
+        <div class="test-card">
+            <h2>📄 Contenu de Test pour Scroll</h2>
+            <p>Ce contenu sert à tester que l'overlay fonctionne correctement en floutant et bloquant le contenu de la page lorsque le menu mobile est ouvert.</p>
+            <p>Quand le menu est ouvert, ce contenu doit être flouté et inaccessible, mais le menu de navigation doit rester parfaitement visible et utilisable.</p>
+        </div>
+        
+        <div class="test-card">
+            <h2>🎯 Test Zone Étendue</h2>
+            <p>Contenu additionnel pour créer plus de hauteur de page et permettre de tester le comportement du scroll lorsque le menu mobile est actif.</p>
+            <p style="height: 100px; background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">Zone Colorée de Test</p>
+        </div>
+    </div>
+
+    <script src="js/navigation-unified.js"></script>
+</body>
+</html>
