@@ -1,0 +1,40 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Node Modules (if you add npm later)
+node_modules/
+package-lock.json
+
+# Build Files (if you add a build process)
+dist/
+build/
+.cache/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Large Files (optional - uncomment if needed)
+# *.psd
+# *.ai
+# *.sketch
