@@ -106,15 +106,17 @@ $(document).ready(function() {
         mobileMenuScrollTop = $(window).scrollTop();
         $('#hamburger').addClass('active').attr('aria-expanded', 'true');
         $('#navMenu').addClass('active').attr('aria-hidden', 'false');
-        $('body').addClass('menu-open').css('top', '-' + mobileMenuScrollTop + 'px');
+        // Scroll lock sans position:fixed (évite le stacking context qui casse z-index)
+        $('body').addClass('menu-open');
+        $('html').css('overflow', 'hidden');
     }
 
     function closeMobileMenu() {
         $('#hamburger').removeClass('active').attr('aria-expanded', 'false');
         $('#navMenu').removeClass('active').attr('aria-hidden', 'true');
         $('.nav-dropdown').removeClass('open');
-        $('body').removeClass('menu-open').css('top', '');
-        $(window).scrollTop(mobileMenuScrollTop);
+        $('body').removeClass('menu-open');
+        $('html').css('overflow', '');
     }
 
     $('#hamburger').on('click', function(e) {
