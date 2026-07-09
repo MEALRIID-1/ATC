@@ -294,7 +294,7 @@
     }
     
     /* IMAGES RESPONSIVE */
-    img {
+    img:not(.logo-img) {
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
@@ -617,7 +617,7 @@
     }
     
     /* MAKE SURE IMAGES DON'T BREAK THE LAYOUT */
-    img, 
+    img:not(.logo-img), 
     video, 
     iframe, 
     embed, 
@@ -726,6 +726,19 @@
         clear: none !important;
         float: none !important;
         overflow: visible !important;
+    }
+
+    /* 4b. Image du logo - taille contrôlée sur mobile/tablette */
+    .logo-img {
+        height: 50px !important;
+        width: auto !important;
+        max-width: 160px !important;
+        filter: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        display: block !important;
+        object-fit: contain !important;
     }
 
     /* 5. Hamburger - visible et cliquable */
@@ -939,4 +952,10 @@
         max-width: 100vw !important;
         padding: 72px 20px 24px !important;
     }
-}
+
+    /* Logo encore plus petit sur très petits écrans */
+    .logo-img {
+        height: 42px !important;
+        max-width: 130px !important;
+    }
+}

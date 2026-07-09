@@ -358,20 +358,52 @@ ul {
 .logo {
     z-index: 10002 !important;
     position: relative !important;
+    display: flex;
+    align-items: center;
 }
 
+/* Lien wrapper du logo */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+}
+
+/* Image logo - taille et style premium */
+.logo-img {
+    height: 68px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    display: block;
+    /* Pas d'ombre - le logo se fond naturellement avec le fond */
+    filter: none;
+    transition: transform 0.25s ease;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Hover effect premium */
+.logo-link:hover .logo-img {
+    transform: scale(1.04);
+    filter: none;
+}
+
+/* Conserver compatibilité avec les anciennes règles logo-text/subtitle si encore utilisées ailleurs */
 .logo-text {
     font-size: 32px;
     font-weight: 800;
     color: var(--primary-color) !important;
     letter-spacing: 1px;
     text-transform: uppercase;
+    display: none; /* masqué - remplacé par l'image */
 }
 
 .logo-subtitle {
     font-size: 11px;
     color: var(--text-light) !important;
-    display: block;
+    display: none; /* masqué - remplacé par l'image */
     margin-top: -5px;
 }
 
@@ -384,6 +416,12 @@ ul {
 
 .navbar.scrolled .logo-subtitle {
     color: var(--text-light);
+}
+
+/* Sur navbar scrolled : léger ajustement de l'image */
+.navbar.scrolled .logo-img {
+    height: 62px;
+    filter: none;
 }
 
 .nav-menu {
