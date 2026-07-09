@@ -6,13 +6,20 @@ $(document).ready(function() {
     'use strict';
 
     // ===================================
-    // LOADER
+    // LOADER - disparaît dès que le DOM est prêt, sans délai artificiel
     // ===================================
-    $(window).on('load', function() {
-        setTimeout(function() {
+    // Cacher immédiatement si la page est déjà chargée
+    if (document.readyState === 'complete') {
+        $('.loader-wrapper').addClass('fade-out');
+    } else {
+        $(window).on('load', function() {
             $('.loader-wrapper').addClass('fade-out');
-        }, 500);
-    });
+        });
+    }
+    // Sécurité : forcer la disparition après 2s max même si load ne se déclenche pas
+    setTimeout(function() {
+        $('.loader-wrapper').addClass('fade-out');
+    }, 2000);
 
     // ===================================
     // NAVIGATION
@@ -248,11 +255,12 @@ $(document).ready(function() {
     // AOS ANIMATION INITIALIZATION
     // ===================================
     AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
+        duration: 600,
+        easing: 'ease-out',
         once: true,
         mirror: false,
-        offset: 100
+        offset: 60,
+        disable: 'mobile'
     });
 
     // Refresh AOS on window resize
@@ -291,38 +299,17 @@ $(document).ready(function() {
     $(window).on('scroll resize', lazyLoadImages);
     lazyLoadImages();
 
+    
     // ===================================
-    // FORM VALIDATION (for contact forms)
+    // FORM VALIDATION FUNCTIONS
     // ===================================
     
-    // Fonction pour envoyer via WhatsApp
+    // Fonction pour envoyer via WhatsApp (utilisée par d'autres pages)
     function sendToWhatsApp(formData, formType) {
         const phone = '237682828226'; // Numéro WhatsApp ATC
         let message = '';
         
-        if (formType === 'contact') {
-            message = `*NOUVEAU MESSAGE DE CONTACT*\n\n`;
-            message += `📝 *Nom:* ${formData.name}\n`;
-            message += `📧 *Email:* ${formData.email}\n`;
-            if (formData.phone) {
-                message += `📞 *Téléphone:* ${formData.phone}\n`;
-            }
-            if (formData.subject) {
-                message += `📌 *Sujet:* ${formData.subject}\n`;
-            }
-            message += `\n💬 *Message:*\n${formData.message}`;
-        } else if (formType === 'devis') {
-            message = `*NOUVELLE DEMANDE DE DEVIS*\n\n`;
-            message += `📝 *Nom:* ${formData.name}\n`;
-            if (formData.email) {
-                message += `📧 *Email:* ${formData.email}\n`;
-            }
-            message += `📞 *Téléphone:* ${formData.phone}\n`;
-            message += `🏷️ *Type de besoin:* ${formData.type}\n`;
-            if (formData.message) {
-                message += `\n📋 *Détails:*\n${formData.message}`;
-            }
-        } else if (formType === 'quote') {
+        if (formType === 'quote') {
             message = `*DEMANDE DE DEVIS RAPIDE*\n\n`;
             message += `📝 *Nom:* ${formData.name}\n`;
             message += `📞 *Téléphone:* ${formData.phone}\n`;
@@ -342,92 +329,7 @@ $(document).ready(function() {
         return true;
     }
     
-    // Gestion du formulaire de contact
-    $('.contact-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-        const form = $(this);
-        
-        form.find('input[required], textarea[required]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                $(this).addClass('error');
-            } else {
-                $(this).removeClass('error');
-            }
-        });
-
-        // Email validation
-        const emailInput = form.find('input[type="email"]');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (emailInput.length && emailInput.val() && !emailRegex.test(emailInput.val())) {
-            isValid = false;
-            emailInput.addClass('error');
-        }
-
-        if (isValid) {
-            // Collecter les données
-            const formData = {
-                name: form.find('input[name="name"], #contact-name, #name').val(),
-                email: form.find('input[name="email"], #contact-email, #email').val(),
-                phone: form.find('input[name="phone"], #contact-phone, #phone').val(),
-                subject: form.find('input[name="subject"], #contact-subject, #subject').val(),
-                message: form.find('textarea[name="message"], #contact-message, #message').val()
-            };
-            
-            // Envoyer via WhatsApp
-            if (sendToWhatsApp(formData, 'contact')) {
-                showNotification('Redirection vers WhatsApp...', 'success');
-                setTimeout(() => {
-                    form[0].reset();
-                }, 1000);
-            }
-        } else {
-            showNotification('Veuillez remplir tous les champs requis.', 'error');
-        }
-    });
-    
-    // Gestion du formulaire de devis
-    $('.devis-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-        const form = $(this);
-        
-        form.find('input[required], textarea[required], select[required]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                $(this).addClass('error');
-            } else {
-                $(this).removeClass('error');
-            }
-        });
-
-        if (isValid) {
-            // Collecter les données
-            const formData = {
-                name: form.find('input[name="name"], #devis-name').val(),
-                email: form.find('input[name="email"], #devis-email').val(),
-                phone: form.find('input[name="phone"], #devis-phone').val(),
-                type: form.find('select[name="type"], #devis-type').val(),
-                message: form.find('textarea[name="message"], #devis-message').val()
-            };
-            
-            // Envoyer via WhatsApp
-            if (sendToWhatsApp(formData, 'devis')) {
-                showNotification('Redirection vers WhatsApp...', 'success');
-                setTimeout(() => {
-                    form[0].reset();
-                }, 1000);
-            }
-        } else {
-            showNotification('Veuillez remplir tous les champs requis.', 'error');
-        }
-    });
-    
-    // Gestion du formulaire de devis rapide (homepage)
+    // Gestion du formulaire de devis rapide (homepage uniquement)
     $('.quote-form').on('submit', function(e) {
         e.preventDefault();
         

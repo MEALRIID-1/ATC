@@ -2,6 +2,15 @@
    GLOBAL STYLES & RESET
    =================================== */
 
+/* Garantir font-display:swap si Google Fonts est lent à charger */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto');
+}
+
 :root {
     --primary-color: #004080;
     --secondary-color: #A0A0A0;

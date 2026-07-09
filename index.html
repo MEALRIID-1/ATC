@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +6,16 @@
     <meta name="description" content="ATC - Atelier Tour du Cameroun, fabrication métallique, charpentes métalliques et flexibles hydrauliques à Douala.">
     <meta name="keywords" content="ATC, Atelier Tour du Cameroun, flexibles hydrauliques, charpente métallique, mezzanine, carrosserie camion, Douala">
     <title>ATC - Atelier Tour du Cameroun | Fabrication Métallique & Flexibles Hydrauliques</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Preconnect pour Google Fonts (non-bloquant) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts : chargement non-bloquant via print puis all -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"></noscript>
+    <!-- Font Awesome local -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- AOS local -->
+    <link rel="stylesheet" href="css/aos.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/mobile-force.css">
@@ -76,19 +83,19 @@
                 </div>
                 <div class="hero-visual" data-aos="zoom-in">
                     <article class="hero-card">
-                        <img src="images/flexible hydraulique.jpg" alt="Atelier ATC - machine de sertissage">
+                        <img src="images/flexible hydraulique.jpg" alt="Atelier ATC - machine de sertissage" loading="eager">
                         <div class="hero-card-body"><h3>Flexibles hydrauliques</h3><p>Fourniture, dépannage et sertissage sur mesure.</p></div>
                     </article>
                     <article class="hero-card">
-                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.57.jpeg" alt="Atelier ATC - usinage métal">
+                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.57.jpeg" alt="Atelier ATC - usinage métal" loading="lazy">
                         <div class="hero-card-body"><h3>Travail de précision</h3><p>Équipements adaptés aux besoins industriels.</p></div>
                     </article>
                     <article class="hero-card">
-                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.59.jpeg" alt="Machine de flexibles ATC">
+                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.59.jpeg" alt="Machine de flexibles ATC" loading="lazy">
                         <div class="hero-card-body"><h3>Interventions rapides</h3><p>Diagnostic et réparation efficaces sur site ou atelier.</p></div>
                     </article>
                     <article class="hero-card">
-                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.00.jpeg" alt="Équipement industriel ATC">
+                        <img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.00.jpeg" alt="Équipement industriel ATC" loading="lazy">
                         <div class="hero-card-body"><h3>Production fiable</h3><p>Solutions métalliques et charpentes robustes.</p></div>
                     </article>
                 </div>
@@ -107,7 +114,7 @@
 
                 <div class="services-grid" id="services">
                     <article class="service-block" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-block-media"><img src="images/WhatsApp Image 2026-07-06 at 14.42.03.jpeg" alt="Flexibles hydrauliques ATC"></div>
+                        <div class="service-block-media"><img src="images/WhatsApp Image 2026-07-06 at 14.42.03.jpeg" alt="Flexibles hydrauliques ATC" loading="lazy"></div>
                         <div class="service-block-body">
                             <span class="badge-industrial">Flexibles hydrauliques</span>
                             <h3>Fourniture, réparation et sertissage</h3>
@@ -123,7 +130,7 @@
                     </article>
 
                     <article class="service-block" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-block-media"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.02.jpeg" alt="Solutions métalliques ATC"></div>
+                        <div class="service-block-media"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.02.jpeg" alt="Solutions métalliques ATC" loading="lazy"></div>
                         <div class="service-block-body">
                             <span class="badge-industrial">Solutions métalliques</span>
                             <h3>Mezzanines, carrosseries et poutres</h3>
@@ -139,7 +146,7 @@
                     </article>
 
                     <article class="service-block" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-block-media"><img src="images/WhatsApp Image 2026-07-06 at 14.41.58 (1).jpeg" alt="Charpentes métalliques ATC"></div>
+                        <div class="service-block-media"><img src="images/WhatsApp Image 2026-07-06 at 14.41.58 (1).jpeg" alt="Charpentes métalliques ATC" loading="lazy"></div>
                         <div class="service-block-body">
                             <span class="badge-industrial">Charpentes métalliques</span>
                             <h3>Hangars, entrepôts et structures sur mesure</h3>
@@ -160,7 +167,7 @@
         <section class="page-section alt">
             <div class="container">
                 <div class="content-grid">
-                    <div class="page-figure animate-on-scroll" data-animate="right" data-aos="fade-right"><img src="images/soudure.webp" alt="Équipe et atelier ATC"></div>
+                    <div class="page-figure animate-on-scroll" data-animate="right" data-aos="fade-right"><img src="images/soudure.webp" alt="Équipe et atelier ATC" loading="lazy"></div>
                     <div class="content-card animate-on-scroll" data-animate="left" data-aos="fade-left">
                         <span class="section-subtitle" data-i18n="about.subtitle">À propos</span>
                         <h2 class="section-title" style="text-align:left; margin-top:12px;" data-i18n-html="about.title">Une entreprise au service de la <span class="highlight">fiabilité</span></h2>
@@ -206,12 +213,12 @@
                         <button class="gallery-btn" type="button" data-gallery-next><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="gallery-track" id="homepageGallery">
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.57.jpeg" alt="Atelier ATC"><div class="caption">Atelier et équipements de fabrication</div></div>
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.58.jpeg" alt="Machine de sertissage"><div class="caption">Machine de sertissage hydraulique</div></div>
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.59.jpeg" alt="Intervention flexible"><div class="caption">Intervention rapide sur flexible</div></div>
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.00.jpeg" alt="Équipement industriel"><div class="caption">Équipement de production</div></div>
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.01.jpeg" alt="Flexible hydraulique"><div class="caption">Flexible haute pression prêt à l’emploi</div></div>
-                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.03.jpeg" alt="Atelier ATC métal"><div class="caption">Espace atelier et manutention</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.57.jpeg" alt="Atelier ATC" loading="lazy"><div class="caption">Atelier et équipements de fabrication</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.58.jpeg" alt="Machine de sertissage" loading="lazy"><div class="caption">Machine de sertissage hydraulique</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.41.59.jpeg" alt="Intervention flexible" loading="lazy"><div class="caption">Intervention rapide sur flexible</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.00.jpeg" alt="Équipement industriel" loading="lazy"><div class="caption">Équipement de production</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.01.jpeg" alt="Flexible hydraulique" loading="lazy"><div class="caption">Flexible haute pression prêt à l’emploi</div></div>
+                        <div class="gallery-slide"><img src="images/WhatsApp%20Image%202026-07-06%20at%2014.42.03.jpeg" alt="Atelier ATC métal" loading="lazy"><div class="caption">Espace atelier et manutention</div></div>
                     </div>
                 </div>
             </div>
@@ -226,19 +233,19 @@
                 </div>
                 <div class="equipment-grid">
                     <article class="equipment-card">
-                        <div class="equipment-media"><img src="images/atc-cnc.jpg" alt="Machine CNC ATC"></div>
+                        <div class="equipment-media"><img src="images/atc-cnc.jpg" alt="Machine CNC ATC" loading="lazy"></div>
                         <div class="equipment-body"><h3>Usinage CNC</h3><p>Machine de découpe et d’usinage pour pièces techniques et composants de précision.</p></div>
                     </article>
                     <article class="equipment-card">
-                        <div class="equipment-media"><img src="images/atc-hydraulic.jpg" alt="Sertissage hydraulique ATC"></div>
+                        <div class="equipment-media"><img src="images/atc-hydraulic.jpg" alt="Sertissage hydraulique ATC" loading="lazy"></div>
                         <div class="equipment-body"><h3>Sertissage hydraulique</h3><p>Montage de flexibles et raccords avec une finition propre et sécurisée.</p></div>
                     </article>
                     <article class="equipment-card">
-                        <div class="equipment-media"><img src="images/atc-welding.jpg" alt="Soudage ATC"></div>
+                        <div class="equipment-media"><img src="images/atc-welding.jpg" alt="Soudage ATC" loading="lazy"></div>
                         <div class="equipment-body"><h3>Soudage structurel</h3><p>Assemblage et réparation de structures métalliques avec contrôle visuel soigné.</p></div>
                     </article>
                     <article class="equipment-card">
-                        <div class="equipment-media"><img src="images/atc-gear.jpg" alt="Pièce usinée ATC"></div>
+                        <div class="equipment-media"><img src="images/atc-gear.jpg" alt="Pièce usinée ATC" loading="lazy"></div>
                         <div class="equipment-body"><h3>Pièce usinée</h3><p>Éléments mécaniques et pièces métalliques adaptés aux besoins industriels.</p></div>
                     </article>
                 </div>
@@ -321,8 +328,8 @@
     <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
     <a href="https://wa.me/237682828226" class="whatsapp-float" target="_blank" rel="noopener" title="Contactez-nous sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/aos.min.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
